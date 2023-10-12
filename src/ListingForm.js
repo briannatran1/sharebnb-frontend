@@ -1,21 +1,25 @@
 import ShareBnbApi from "./api";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 /** ListingForm: form to add new listing
  *
  *
  */
 function ListingForm() {
+  const navigate = useNavigate();
   const initialState = {
     name: "",
     details: "",
     price: "",
   };
   const [formData, setFormData] = useState(initialState);
-  const [newListing, setNewListing] = useState({});
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-
-    setNewListing(formData);
+    console.log("FormData", formData);
+    const newListingData = await ShareBnbApi.createListing(formData);
+    console.log("newListingData", newListingData);
+    navigate(`/listings/${newListingData.id}/photos`);
   }
 
   /** updates formData */
@@ -60,10 +64,12 @@ function ListingForm() {
           className='form-control form-control-sm'
           id="listing-price"
           name="price"
+          type="number"
           value={formData.price}
           onChange={handleChange}
         />
       </div>
+      <button type="submit" className="btn btn-info">Add your listing!</button>
     </form>
   );
 }

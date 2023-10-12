@@ -59,9 +59,10 @@ class ShareBnbApi {
   }
 
   /** Creates a new listing */
-  static async createListing(data) {
+  static async createListing(formData) {
 
-    let res = await this.request(`/listings`, data, 'POST');
+    let res = await this.request(`listings`, formData, 'POST');
+    console.log("res", res);
     return res.listing;
   }
 

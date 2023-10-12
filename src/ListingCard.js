@@ -14,7 +14,7 @@ function ListingCard({ listing }) {
       <h3 className="card-body">{name}</h3>
       <small>{details}</small><br />
       <small>${price}</small>
-      {photos && <img src={photos[0].url} width={150}></img>}
+      {photos && <img src={photos[0]?.url} width={150}></img>}
     </Link>
   );
 }

@@ -1,22 +1,25 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ShareBnbApi from './api';
 
 const PHOTO_INITIAL_FORM_DATA = {
   "file": ""
 };
 
-function PhotoForm({ newListing }) {
+function PhotoForm() {
   const [formData, setFormData] = useState(PHOTO_INITIAL_FORM_DATA);
+  const { listing_id } = useParams();
 
+
+  // Handles change on form
   function handleChange(evt) {
-    // Handles change on form{
     const { value } = evt.target;
     setFormData(value);
   };
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await ShareBnbApi.uploadPhotos(1, formData);
+    await ShareBnbApi.uploadPhotos(listing_id, formData);
   }
 
   return (
