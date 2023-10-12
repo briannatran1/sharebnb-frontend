@@ -16,6 +16,7 @@ class ShareBnbApi {
     const url = new URL(`${BASE_URL}/${endpoint}`);
     const headers = {
       // authorization: `Bearer ${ShareBnbApi.token}`,
+      'Access-Control-Allow-Origin': '*',
       'content-type': 'application/json',
     };
 
@@ -27,8 +28,6 @@ class ShareBnbApi {
     const body = (method !== "GET")
       ? JSON.stringify(data)
       : undefined;
-
-    // const mode = 'no-cors';
 
     const resp = await fetch(url, { method, body, headers });
 
@@ -64,6 +63,18 @@ class ShareBnbApi {
     let res = await this.request(`listings`, formData, 'POST');
     console.log("res", res);
     return res.listing;
+  }
+
+  /** Returns user object upon logging in */
+  static async login(data) {
+    let res = await this.request(`login`, data, 'POST');
+    return res;
+  }
+
+  /** Returns user object upon signing up  */
+  static async register(data) {
+    let res = await this.request(`signup`, data, 'POST');
+    return res;
   }
 
   /** Uploads photo to AWS */

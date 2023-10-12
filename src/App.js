@@ -6,20 +6,29 @@ import NavBar from './NavBar';
 // import jwt_decode from "jwt-decode";
 import userContext from "./userContext";
 import PhotoForm from './PhotoForm';
+import ShareBnbApi from './api';
 
 /** App.
  *  Renders Nav and Routes for Sharebnb App. */
 function App() {
+  const [currUser, setCurrUser] = useState({});
 
-  const [currUser, setCurrUser] = useState(null);
+  /** logs a user in */
+  async function login(formData) {
+    const token = await ShareBnbApi.login(formData);
 
+    localStorage.setItem("token", token);
+    setToken(token);
+  }
 
+  /** registers a user */
+  async function signup(formData) {
+    const token = await ShareBnbApi.register(formData);
 
-  // return (
-  //   <div className="App">
-  //     <PhotoForm />
-  //   </div>
-  // );
+    localStorage.setItem("token", token);
+    setToken(token);
+  }
+
   return (
     <div className="App">
       <BrowserRouter>

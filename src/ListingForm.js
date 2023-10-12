@@ -16,7 +16,6 @@ function ListingForm() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    console.log("FormData", formData);
     const newListingData = await ShareBnbApi.createListing(formData);
     console.log("newListingData", newListingData);
     navigate(`/listings/${newListingData.id}/photos`);
