@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import api from './api';
+import ShareBnbApi from './api';
 
 const PHOTO_INITIAL_FORM_DATA = {
   "file": ""
@@ -16,7 +16,7 @@ function PhotoForm({ newListing }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await api.uploadPhotos(1, formData);
+    await ShareBnbApi.uploadPhotos(1, formData);
   }
 
   return (
