@@ -1,12 +1,22 @@
 import { useState } from 'react';
 import api from './api';
 
-function PhotoForm() {
-  const [formData, setFormData] = useState(null);
+const PHOTO_INITIAL_FORM_DATA = {
+  "file": ""
+};
+
+function PhotoForm({ newListing }) {
+  const [formData, setFormData] = useState(PHOTO_INITIAL_FORM_DATA);
+
+  function handleChange(evt) {
+    // Handles change on form{
+    const { value } = evt.target;
+    setFormData(value);
+  };
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await api.uploadPhotos();
+    await api.uploadPhotos(1, formData);
   }
 
   return (
@@ -17,7 +27,9 @@ function PhotoForm() {
         <input
           type="file"
           id="listing-photos"
-          name="filename" />
+          name="filename"
+          value={formData.file}
+          onChange={handleChange} />
       </div>
 
       <button className='btn btn-primary'>Upload</button>

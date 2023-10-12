@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import ListingsList from "./ListingsList";
+import Home from "./Home";
 
 
 /** RoutesList: All routes.
