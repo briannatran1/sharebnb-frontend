@@ -58,6 +58,13 @@ class ShareBnbApi {
     return res.listing;
   }
 
+  /** Creates a new listing */
+  static async createListing(data) {
+
+    let res = await this.request(`/listings`, data, 'POST');
+    return res.listing;
+  }
+
   /** Uploads photo to AWS */
   static async uploadPhotos(listingId, file) {
     const url = `${BASE_URL}/listings/${listingId}/photos`;
