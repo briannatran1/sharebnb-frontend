@@ -15,7 +15,7 @@ class ShareBnbApi {
   static async request(endpoint, data = {}, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
     const headers = {
-      authorization: `Bearer ${ShareBnbApi.token}`,
+      // authorization: `Bearer ${ShareBnbApi.token}`,
       'content-type': 'application/json',
     };
 
@@ -27,6 +27,8 @@ class ShareBnbApi {
     const body = (method !== "GET")
       ? JSON.stringify(data)
       : undefined;
+
+    // const mode = 'no-cors';
 
     const resp = await fetch(url, { method, body, headers });
 
@@ -63,11 +65,13 @@ class ShareBnbApi {
     const headers = {
       "Content-Type": "multipart/form-data"
     };
-    const body = {
+    const body = JSON.stringify({
       "file": file
-    };
+    });
 
-    const resp = await fetch(url, { method, headers, body });
+    const mode = 'cors';
+
+    const resp = await fetch(url, { method, headers, body, mode });
     const photoData = await resp.json();
 
     return photoData;

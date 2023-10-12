@@ -15,9 +15,17 @@ function App() {
 
 
 
+  // return (
+  //   <div className="App">
+  //     <PhotoForm />
+  //   </div>
+  // );
   return (
     <div className="App">
-      <PhotoForm />
+      <BrowserRouter>
+        <NavBar />
+        <RoutesList />
+      </BrowserRouter>
     </div>
   );
   // return (
