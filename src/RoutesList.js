@@ -14,7 +14,7 @@ import ListingForm from "./ListingForm";
 function RoutesList({ login, signup, currUser }) {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={<Home currUser={currUser} />} />
 
       <Route path='/login' element={<LoginForm login={login} />} />
       <Route path='/signup' element={<SignUpForm signup={signup} />} />

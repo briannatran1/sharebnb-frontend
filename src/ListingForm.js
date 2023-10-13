@@ -22,7 +22,7 @@ function ListingForm({ currUser }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     const newListing = await ShareBnbApi.createListing(formData);
-    navigate(`/listings/1/photos`);
+    navigate(`/listings/2/photos`);
   }
 
   /** updates formData */

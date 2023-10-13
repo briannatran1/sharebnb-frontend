@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import './NavBar.css';
 
 /** NavBar: displays navbar
@@ -27,11 +27,11 @@ function NavBar({ logout, currUser = null }) {
     return (
       <>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/listings/add">Add a new listing</NavLink>
+          <Link className="nav-link" to="/listings/add">Add a new listing</Link>
         </li>
         <button
           className='btn link-danger text-decoration-none'
-          onClick={logout}>Log Out</button>
+          onClick={logout}>Log Out {currUser.user.username}</button>
       </>
     );
   }
@@ -39,7 +39,7 @@ function NavBar({ logout, currUser = null }) {
   return (
     <nav className="Nav navbar navbar-light navbar-expand-lg">
       <div className="container">
-        <NavLink className="navbar-brand" to="/listings">ShareBnB</NavLink>
+        <Link className="navbar-brand" to="/listings">ShareBnB</Link>
 
         <ul className="list-unstyled">
           {currUser

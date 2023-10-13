@@ -32,7 +32,9 @@ function App() {
   function logout() {
     setCurrUser(null);
     localStorage.removeItem("currUser");
+    //TODO:redirect back to login
   }
+
 
   //TODO: incorporate jwts
   //TODO: finish functionality of app

@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
 
@@ -19,13 +19,15 @@ function SignUpForm({ signup }) {
   const initialState = {
     username: "",
     password: "",
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
   };
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
+
 
   /** submits form and checks for errors */
   async function handleSubmit(evt) {
@@ -33,6 +35,7 @@ function SignUpForm({ signup }) {
     try {
       // test this
       await signup(formData);
+      navigate('/');
     }
     catch (err) {
       setErrors(err);
@@ -78,26 +81,26 @@ function SignUpForm({ signup }) {
       </div>
 
       <div className='mb-3'>
-        <label className="form-label" htmlFor="firstName"><b>First Name</b></label>
+        <label className="form-label" htmlFor="first_name"><b>First Name</b></label>
         <input
-          aria-label="firstName"
+          aria-label="first_name"
           className='form-control form-control-sm'
-          id="signup-firstName"
-          name="firstName"
-          value={formData.firstName}
+          id="signup-first_name"
+          name="first_name"
+          value={formData.first_name}
           onChange={handleChange}
 
         />
       </div>
 
       <div className='mb-3'>
-        <label className="form-label" htmlFor="lastName"><b>Last Name</b></label>
+        <label className="form-label" htmlFor="last_name"><b>Last Name</b></label>
         <input
-          aria-label="lastName"
+          aria-label="last_name"
           className='form-control form-control-sm'
-          id="signup-lastName"
-          name="lastName"
-          value={formData.lastName}
+          id="signup-last_name"
+          name="last_name"
+          value={formData.last_name}
           onChange={handleChange}
 
         />
