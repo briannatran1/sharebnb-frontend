@@ -12,10 +12,10 @@ function PhotoForm() {
 
 
   // Handles change on form
-  function handleChange(evt) {
-    const { value } = evt.target;
-    setFormData(value);
-  };
+  // function handleChange(evt) {
+  //   const { value } = evt.target;
+  //   setFormData(value);
+  // };
 
   async function handleSubmit(evt) {
     evt.preventDefault();
@@ -32,7 +32,8 @@ function PhotoForm() {
           id="listing-photos"
           name="filename"
           value={formData.file}
-          onChange={handleChange} />
+        // onChange={handleChange} />
+        />
       </div>
 
       <button className='btn btn-primary'>Upload</button>
