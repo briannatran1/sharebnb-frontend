@@ -12,8 +12,7 @@ function PhotoForm() {
 
   // Handles change on form
   function handleChange(evt) {
-    console.log("evt.target.files", evt.target.files);
-    setFormData({ "file": evt.target.files[0] });
+    setFormData(evt.target.files[0]);
   };
 
   /** handles submission of photo */
@@ -25,7 +24,6 @@ function PhotoForm() {
 
     } catch (error) {
       console.log(error);
-
     }
   }
 
@@ -37,7 +35,7 @@ function PhotoForm() {
         <input
           type="file"
           id="listing-photos"
-          name="filename"
+          name="file"
           onChange={handleChange} />
       </div>
 

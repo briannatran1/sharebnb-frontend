@@ -79,20 +79,19 @@ class ShareBnbApi {
 
   /** Uploads photo to AWS */
   static async uploadPhotos(listingId, file) {
-    console.log(listingId);
     const url = `${BASE_URL}/listings/${listingId}/photos`;
-    console.log(url);
     const method = "POST";
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      "Content-Type": "multipart/form-data"
-    };
-    const body = {
-      "file": file
-    };
-    console.log(body);
+    // never set header by yourself if using multiform/form-data
+    // const headers = {
+    //   "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundaryE1NUFwGGWwIitBhv"
+    // };
 
-    const resp = await fetch(url, { method, body, headers });
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const body = formData;
+
+    const resp = await fetch(url, { method, body });
     const photoData = await resp.json();
 
     return photoData;
