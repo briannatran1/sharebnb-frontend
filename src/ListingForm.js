@@ -25,8 +25,6 @@ function ListingForm({ currUser }) {
     navigate(`/listings/1/photos`);
   }
 
-
-
   /** updates formData */
   function handleChange(evt) {
     const { name, value } = evt.target;
