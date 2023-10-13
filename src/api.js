@@ -61,7 +61,7 @@ class ShareBnbApi {
   static async createListing(formData) {
 
     let res = await this.request(`listings`, formData, 'POST');
-    console.log("res", res);
+    console.log("new listing", res);
     return res.listing;
   }
 
@@ -82,19 +82,17 @@ class ShareBnbApi {
     const url = `${BASE_URL}/listings/${listingId}/photos`;
     const method = "POST";
     const headers = {
+      'Access-Control-Allow-Origin': '*',
       "Content-Type": "multipart/form-data"
     };
     const body = JSON.stringify({
       "file": file
     });
 
-    const mode = 'cors';
-
-    const resp = await fetch(url, { method, headers, body, mode });
+    const resp = await fetch(url, { method, headers, body });
     const photoData = await resp.json();
 
     return photoData;
-
   }
 }
 

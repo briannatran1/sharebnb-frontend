@@ -3,6 +3,9 @@ import './NavBar.css';
 
 /** NavBar: displays navbar
  *
+ * Props:
+ * - logout()
+ * - currUser {}
  *
  */
 function NavBar({ logout, currUser = null }) {

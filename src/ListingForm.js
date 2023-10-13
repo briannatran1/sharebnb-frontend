@@ -4,22 +4,24 @@ import { useNavigate } from "react-router-dom";
 import './ListingForm.css';
 /** ListingForm: form to add new listing
  *
+ * Props
+ * - currUser {}
  *
  */
-function ListingForm() {
+function ListingForm({ currUser }) {
   const navigate = useNavigate();
   const initialState = {
     name: "",
     details: "",
     price: "",
+    id: currUser.user.id
   };
   const [formData, setFormData] = useState(initialState);
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const newListingData = await ShareBnbApi.createListing(formData);
-    console.log("newListingData", newListingData);
-    navigate(`/listings/${newListingData.id}/photos`);
+    const newListing = await ShareBnbApi.createListing(formData);
+    navigate(`/listings/${newListing.id}/photos`);
   }
 
   /** updates formData */

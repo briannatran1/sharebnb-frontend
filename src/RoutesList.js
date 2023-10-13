@@ -11,7 +11,7 @@ import ListingForm from "./ListingForm";
  *
  */
 
-function RoutesList({ login, signup }) {
+function RoutesList({ login, signup, currUser }) {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
@@ -20,7 +20,7 @@ function RoutesList({ login, signup }) {
       <Route path='/signup' element={<SignUpForm signup={signup} />} />
 
       <Route path='/listings' element={<ListingsList />} />
-      <Route path='/listings/add' element={<ListingForm />} />
+      <Route path='/listings/add' element={<ListingForm currUser={currUser} />} />
       <Route path='/listings/:listing_id/photos' element={<PhotoForm />} />
 
       <Route path='*' element={<Navigate to='/' />} />

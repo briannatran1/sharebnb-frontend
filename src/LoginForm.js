@@ -27,9 +27,7 @@ function LoginForm({ login }) {
   /** submits form and checks for errors */
   async function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(formData);
     try {
-      //test this
       await login(formData);
       navigate('/');
     }

@@ -10,13 +10,12 @@ function PhotoForm() {
   const [formData, setFormData] = useState(PHOTO_INITIAL_FORM_DATA);
   const { listing_id } = useParams();
 
-
   // Handles change on form
-  // function handleChange(evt) {
-  //   const { value } = evt.target;
-  //   setFormData(value);
-  // };
+  function handleChange(evt) {
+    setFormData(evt.target.files[0]);
+  };
 
+  /** handles submission of photo */
   async function handleSubmit(evt) {
     evt.preventDefault();
     await ShareBnbApi.uploadPhotos(listing_id, formData);
@@ -31,9 +30,7 @@ function PhotoForm() {
           type="file"
           id="listing-photos"
           name="filename"
-          value={formData.file}
-        // onChange={handleChange} />
-        />
+          onChange={handleChange} />
       </div>
 
       <button className='btn btn-primary'>Upload</button>

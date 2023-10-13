@@ -19,7 +19,6 @@ function App() {
 
     localStorage.setItem("currUser", user.user.id);
     setCurrUser(user);
-
   }
 
   /** registers a user */
@@ -35,12 +34,15 @@ function App() {
     localStorage.removeItem("currUser");
   }
 
+  //TODO: incorporate jwts
+  //TODO: finish functionality of app
+
   return (
     <div className="App">
       <BrowserRouter>
         <userContext.Provider value={{ currUser }}>
           <NavBar currUser={currUser} logout={logout} />
-          <RoutesList login={login} signup={signup} />
+          <RoutesList login={login} signup={signup} currUser={currUser} />
         </userContext.Provider>
       </BrowserRouter>
     </div>
