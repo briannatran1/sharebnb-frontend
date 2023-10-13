@@ -1,6 +1,7 @@
 import ShareBnbApi from "./api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './ListingForm.css';
 /** ListingForm: form to add new listing
  *
  *

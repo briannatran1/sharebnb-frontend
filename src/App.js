@@ -45,17 +45,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-  // return (
-  //   <div className="App">
-  //     <BrowserRouter>
-  //       <NavBar currentUser={currentUser} />
-  //       <RoutesList
-  //         login={login}
-  //         signup={signup}
-  //         currentUser={currentUser} />
-  //     </BrowserRouter>
-  //   </div>
-  // );
 }
 
 export default App;
