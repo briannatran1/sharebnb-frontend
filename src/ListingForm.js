@@ -1,5 +1,5 @@
 import ShareBnbApi from "./api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './ListingForm.css';
 /** ListingForm: form to add new listing
@@ -17,12 +17,15 @@ function ListingForm({ currUser }) {
     id: currUser.user.id
   };
   const [formData, setFormData] = useState(initialState);
+  const [newListingId, setNewListingId] = useState(null);
 
   async function handleSubmit(evt) {
     evt.preventDefault();
     const newListing = await ShareBnbApi.createListing(formData);
-    navigate(`/listings/${newListing.id}/photos`);
+    navigate(`/listings/1/photos`);
   }
+
+
 
   /** updates formData */
   function handleChange(evt) {

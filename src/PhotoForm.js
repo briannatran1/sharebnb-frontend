@@ -12,13 +12,21 @@ function PhotoForm() {
 
   // Handles change on form
   function handleChange(evt) {
-    setFormData(evt.target.files[0]);
+    console.log("evt.target.files", evt.target.files);
+    setFormData({ "file": evt.target.files[0] });
   };
 
   /** handles submission of photo */
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await ShareBnbApi.uploadPhotos(listing_id, formData);
+    try {
+      console.log(formData);
+      await ShareBnbApi.uploadPhotos(listing_id, formData);
+
+    } catch (error) {
+      console.log(error);
+
+    }
   }
 
   return (
