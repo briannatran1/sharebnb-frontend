@@ -11,29 +11,37 @@ import ShareBnbApi from './api';
 /** App.
  *  Renders Nav and Routes for Sharebnb App. */
 function App() {
-  const [currUser, setCurrUser] = useState({});
+  const [currUser, setCurrUser] = useState(null);
 
   /** logs a user in */
   async function login(formData) {
-    const token = await ShareBnbApi.login(formData);
+    const user = await ShareBnbApi.login(formData);
 
-    localStorage.setItem("token", token);
-    setToken(token);
+    localStorage.setItem("currUser", user.user.id);
+    setCurrUser(user);
+
   }
 
   /** registers a user */
   async function signup(formData) {
-    const token = await ShareBnbApi.register(formData);
+    const user = await ShareBnbApi.signup(formData);
+    console.log(user);
+    localStorage.setItem("currUser", user);
+    setCurrUser(user);
+  }
 
-    localStorage.setItem("token", token);
-    setToken(token);
+  function logout() {
+    setCurrUser(null);
+    localStorage.removeItem("currUser");
   }
 
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
-        <RoutesList />
+        <userContext.Provider value={{ currUser }}>
+          <NavBar currUser={currUser} logout={logout} />
+          <RoutesList login={login} signup={signup} />
+        </userContext.Provider>
       </BrowserRouter>
     </div>
   );

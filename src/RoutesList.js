@@ -11,13 +11,13 @@ import ListingForm from "./ListingForm";
  *
  */
 
-function RoutesList() {
+function RoutesList({ login, signup }) {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
 
-      <Route path='/login' element={<LoginForm />} />
-      <Route path='/signup' element={<SignUpForm />} />
+      <Route path='/login' element={<LoginForm login={login} />} />
+      <Route path='/signup' element={<SignUpForm signup={signup} />} />
 
       <Route path='/listings' element={<ListingsList />} />
       <Route path='/listings/add' element={<ListingForm />} />

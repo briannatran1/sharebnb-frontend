@@ -72,7 +72,7 @@ class ShareBnbApi {
   }
 
   /** Returns user object upon signing up  */
-  static async register(data) {
+  static async signup(data) {
     let res = await this.request(`signup`, data, 'POST');
     return res;
   }

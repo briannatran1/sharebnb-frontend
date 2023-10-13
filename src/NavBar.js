@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
  *
  *
  */
-function NavBar({ logout, currentUser = null }) {
+function NavBar({ logout, currUser = null }) {
   /** renders if user is not logged in */
   function notLoggedIn() {
     return (
@@ -38,7 +38,7 @@ function NavBar({ logout, currentUser = null }) {
         <NavLink className="navbar-brand" to="/listings">ShareBnB</NavLink>
 
         <ul className="list-unstyled">
-          {currentUser
+          {currUser
             ? loggedIn()
             : notLoggedIn()
           }

@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
 
@@ -19,6 +19,7 @@ function LoginForm({ login }) {
     username: "",
     password: "",
   };
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState([]);
@@ -26,9 +27,11 @@ function LoginForm({ login }) {
   /** submits form and checks for errors */
   async function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(formData);
     try {
       //test this
       await login(formData);
+      navigate('/');
     }
     catch (err) {
       setErrors(err);
